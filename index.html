@@ -1,1 +1,36 @@
-al fil hp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Character Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #character {
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Character Game</h1>
+    <p>Klik tombol di bawah untuk mendapatkan karakter acak:</p>
+    <button id="generateCharacter">Generate Character</button>
+    <p>Character yang Anda dapatkan:</p>
+    <div id="character"></div>
+
+    <script>
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        function generateRandomCharacter() {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            const randomCharacter = characters[randomIndex];
+            document.getElementById("character").textContent = randomCharacter;
+        }
+
+        document.getElementById("generateCharacter").addEventListener("click", generateRandomCharacter);
+    </script>
+</body>
+</html>
