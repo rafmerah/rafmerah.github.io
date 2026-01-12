@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container{
+    background: linear-gradient(135deg, #000c29 0%, #00154d 40%, #003399 100%);
+    height: 220vh;
+}
+.nav-container{
+    width: 100%;
+}
+.navbar{
+    width: 100%;
+    position: fixed;
+}
+.fa-regular{
+    margin: 10px;
+}
+.ul-nav{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.li-nav{
+    margin: 20px;
+    list-style-type: none;
+}
+.a-nav{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.a-nav:hover{
+    color: #00E5FF;
+}
+.Fav-container{
+    display: flex;
+    align-items: center;
+   height: 50vh;
+   padding-left: 50px;
+}
+h3{
+    color: aliceblue;
+    font-size: 30px;
+    animation-name: Animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+h3:hover{
+    color: rgb(98, 255, 213);
+}
+@keyframes Animation {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+ }
+.content{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    height: auto;
+width: 300px;
+ border: 1px transparent white;
+ padding: 20px;
+ border-radius: 6px;
+ box-shadow: 2px 2px 2px 2px rgb(255, 255, 255);
+ margin: 20px;
+ animation-name: card-Animation;
+ animation-duration: 4s;
+ animation-timing-function: ease-in-out;
+ animation-fill-mode: forwards;
+}
+@keyframes card-Animation{
+    0%{
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+img{
+    width: 300px;
+    border-radius: 9PX;
+}
+.P-content{
+    color: white;
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+}
+.p-kontent{
+    color: aliceblue;
+    padding-top: 20px;
+    margin: 10px;
+}
+.fa-brands{
+    margin: 10px;
+}
