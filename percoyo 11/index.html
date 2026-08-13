@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percoyo Genk - Memori Kita</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Percoyo Genk</h1>
+        <p class="subtitle">Tempat menyimpan semua kenangan konyol dan seru kita.</p>
+    </header>
+
+    <!-- AREA UPLOAD -->
+    <div class="upload-section">
+        <input type="file" id="file-input" accept="image/*">
+        <select id="category-select">
+            <option value="nongkrong">Nongkrong</option>
+            <option value="liburan">Liburan</option>
+            <option value="ultah">Ulang Tahun</option>
+        </select>
+        <button id="add-btn">Tambah Foto</button>
+    </div>
+
+    <!-- MENU FILTER -->
+    <div class="filter-menu">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="nongkrong">Nongkrong</button>
+        <button class="filter-btn" data-filter="liburan">Liburan</button>
+        <button class="filter-btn" data-filter="ultah">Ulang Tahun</button>
+    </div>
+
+    <!-- GALERI FOTO -->
+    <main class="gallery-container" id="gallery">
+        <!-- Foto awal bisa ditambahkan di sini, atau langsung upload lewat web -->
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Percoyo Genk. Susah senang bareng-bareng terus.</p>
+    </footer>
+    <!-- SCRIPT JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

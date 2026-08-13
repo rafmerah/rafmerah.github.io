@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+header {
+    padding: 40px 0 20px;
+}
+h1 {
+    color: #FFD700;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+p.subtitle {
+    font-size: 1.1rem;
+    color: #aaaaaa;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+/* --- GAYA FORM UPLOAD --- */
+.upload-section {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    border: 1px dashed #FFD700;
+    display: flex;
+    flex-wrap: wrap; /* Memastikan elemen turun ke bawah jika layar sempit */
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.upload-section input, .upload-section select, .upload-section button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    flex: 1 1 auto; /* Membuat elemen bisa memanjang/menyusut sesuai ruang */
+    min-width: 150px;
+}
+.upload-section input[type="file"] {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    width: 100%; /* Memaksa input file rapi di semua layar */
+}
+.upload-section button {
+    background-color: #FFD700;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.upload-section button:hover {
+    background-color: #e6c200;
+}
+
+/* --- GAYA MENU FILTER --- */
+.filter-menu {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Biar tombol filter gak keluar layar di HP */
+}
+.filter-btn {
+    background: transparent;
+    color: #f0f0f0;
+    border: 2px solid #FFD700;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: #FFD700;
+    color: #121212;
+}
+
+/* --- GAYA GALERI --- */
+.gallery-container {
+    display: grid;
+    /* Auto-fit bikin jumlah kolom nyesuaiin lebar layar. Min 200px per foto. */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    aspect-ratio: 1 / 1; /* Pastikan foto selalu kotak sempurna (fit) */
+    background-color: #222; /* Warna dasar kalau foto sedang loading */
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ini kuncinya biar foto gak gepeng/ketarik */
+    display: block;
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.05); /* Efek zoom saat kursor di atas foto */
+}
+
+/* --- TAMPILAN TOMBOL HAPUS (X) --- */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    z-index: 10; 
+}
+.delete-btn:hover {
+    background-color: rgb(255, 0, 0);
+    transform: scale(1.1);
+}
+
+/* Di HP, tombol hapus selalu muncul. Di PC, muncul pas di-hover. */
+.gallery-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.hide {
+    display: none !important;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   PENGATURAN KHUSUS UNTUK HP (RESPONSIVE)
+   ========================================= */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 2.2rem; /* Judul agak dikecilkan agar muat di HP */
+    }
+    .upload-section {
+        flex-direction: column; /* Formulir numpuk ke bawah biar gak tabrakan */
+        padding: 15px;
+    }
+    .upload-section input, .upload-section select, .upload-section button {
+        width: 100%; /* Semua input ambil lebar layar penuh */
+    }
+    .gallery-container {
+        /* Di HP, paksa jadi 2 kolom berjejer atau 3 kolom kecil */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+        gap: 10px;
+    }
+    .filter-btn {
+        padding: 6px 12px; /* Tombol filter dikecilkan dikit */
+        font-size: 0.85rem;
+    }
+    .delete-btn {
+        opacity: 1; /* Di HP (layar sentuh tidak ada hover), tombol hapus selalu terlihat */
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 16px;
+    }
+}
