@@ -1,0 +1,203 @@
+/* ===== Variabel warna & ukuran (ubah di sini untuk ganti tema) ===== */
+:root {
+  --blue-900: #0b2447;
+  --blue-700: #19376d;
+  --blue-500: #2563eb;
+  --blue-300: #7aa7f7;
+  --blue-100: #e6efff;
+  --blue-50:  #f4f8ff;
+  --text:     #12213f;
+  --muted:    #5b6b8c;
+  --radius:   14px;
+  --max-w:    1200px;
+  --pad:      clamp(14px, 4vw, 32px);   /* jarak tepi menyesuaikan layar */
+  --shadow:   0 6px 20px rgba(25, 55, 109, .12);
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--blue-50);
+  line-height: 1.6;
+}
+button, input { font: inherit; }
+:focus-visible { outline: 3px solid var(--blue-300); outline-offset: 2px; }
+
+/* ===== Navbar ===== */
+.navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--blue-900);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+}
+.navbar__inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 12px var(--pad);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.brand { color: #fff; font-weight: 800; font-size: 1.2rem; text-decoration: none; letter-spacing: -.01em; }
+.navbar__tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+.search {
+  width: 190px; padding: 9px 14px; border-radius: 999px;
+  border: 1px solid transparent; background: var(--blue-700); color: #fff;
+}
+.search::placeholder { color: var(--blue-300); }
+.search:focus { outline: none; border-color: var(--blue-300); }
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown__toggle {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  padding: 9px 16px; border: 0; border-radius: 999px;
+  background: var(--blue-500); color: #fff;
+  transition: background .2s;
+}
+.dropdown__toggle:hover { background: #1d4fd0; }
+.dropdown__toggle svg { transition: transform .2s; }
+.dropdown.open .dropdown__toggle svg { transform: rotate(180deg); }
+
+.dropdown__menu {
+  position: absolute; right: 0; top: calc(100% + 8px);
+  min-width: 190px; margin: 0; padding: 6px; list-style: none;
+  background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.dropdown.open .dropdown__menu { opacity: 1; visibility: visible; transform: none; }
+.dropdown__menu button {
+  width: 100%; text-align: left; padding: 10px 14px; border: 0; border-radius: 10px;
+  background: none; color: var(--text); cursor: pointer;
+}
+.dropdown__menu button:hover { background: var(--blue-100); }
+.dropdown__menu button.active { background: var(--blue-500); color: #fff; }
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center; color: #fff;
+  padding: 64px 20px 72px;
+  background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
+}
+.hero h1 { margin: 0 auto 12px; max-width: 18ch; font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.15; letter-spacing: -.02em; }
+.hero p { margin: 0 auto; max-width: 48ch; color: var(--blue-100); }
+
+/* ===== Galeri ===== */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 32px var(--pad) 56px; }
+.result-info { margin: 0 0 16px; color: var(--muted); font-size: .95rem; }
+
+.gallery {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.card {
+  position: relative; overflow: hidden; aspect-ratio: 4 / 3;
+  border-radius: var(--radius); background: var(--blue-100); box-shadow: var(--shadow);
+}
+.card img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+@media (hover: hover) { .card:hover img { transform: scale(1.08); } }
+.card:active img { transform: scale(1.04); }
+.card__caption {
+  position: absolute; inset: auto 0 0 0; padding: 28px 14px 12px;
+  color: #fff; font-weight: 500; font-size: .95rem;
+  background: linear-gradient(to top, rgba(11, 36, 71, .85), transparent);
+}
+.card__caption small { display: block; color: var(--blue-300); font-weight: 400; }
+.card.hide { display: none; }
+
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* ===== Footer ===== */
+.footer { background: var(--blue-900); color: var(--blue-100); padding: 40px 20px 20px; }
+.footer__inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.footer h2 { margin: 0 0 6px; color: #fff; font-size: 1.3rem; }
+.footer p { margin: 0; max-width: 46ch; }
+.instagram {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 999px;
+  background: #fff; color: var(--blue-700); font-weight: 700; text-decoration: none;
+  transition: transform .2s, background .2s;
+}
+.instagram:hover { background: var(--blue-100); transform: translateY(-2px); }
+.footer__copy { max-width: var(--max-w); margin: 28px auto 0 !important; padding-top: 16px; border-top: 1px solid var(--blue-700); font-size: .85rem; color: var(--blue-300); }
+
+/* ===== Responsif =====
+   HP kecil  : < 480px
+   HP/tablet : 480px - 899px
+   Laptop    : 900px - 1399px
+   PC besar  : >= 1400px
+*/
+
+/* Area aman untuk HP berponi / gestur bar */
+.navbar { padding-top: env(safe-area-inset-top); }
+.footer { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+
+/* Target sentuh nyaman di layar sentuh */
+@media (pointer: coarse) {
+  .dropdown__toggle, .search, .dropdown__menu button, .instagram { min-height: 44px; }
+}
+
+/* HP & tablet kecil (di bawah 700px) */
+@media (max-width: 699px) {
+  .navbar__inner { flex-direction: column; align-items: stretch; gap: 10px; }
+  .brand { text-align: center; }
+  .navbar__tools { flex-direction: column; align-items: stretch; width: 100%; }
+  .search { width: 100%; }
+  .dropdown, .dropdown__toggle { width: 100%; }
+  .dropdown__toggle { justify-content: space-between; }
+  .dropdown__menu { left: 0; right: 0; min-width: 0; max-height: 60vh; overflow-y: auto; }
+
+  .hero { padding: 40px var(--pad) 48px; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .card { aspect-ratio: 1 / 1; }
+  .card__caption { font-size: .8rem; padding: 22px 10px 8px; }
+
+  .footer__inner { flex-direction: column; align-items: flex-start; }
+  .instagram { width: 100%; justify-content: center; }
+}
+
+/* HP sangat kecil */
+@media (max-width: 359px) {
+  .gallery { grid-template-columns: 1fr; }
+  .card { aspect-ratio: 4 / 3; }
+}
+
+/* Tablet (700px - 1023px) */
+@media (min-width: 700px) and (max-width: 1023px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+}
+
+/* Laptop (1024px ke atas) */
+@media (min-width: 1024px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+
+/* PC / monitor lebar (1400px ke atas) */
+@media (min-width: 1400px) {
+  :root { --max-w: 1400px; }
+  .gallery { grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  body { font-size: 1.05rem; }
+}
+
+/* Monitor ultra lebar (1920px ke atas) */
+@media (min-width: 1920px) {
+  :root { --max-w: 1700px; }
+  .gallery { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* HP posisi landscape: hero dipadatkan supaya galeri cepat terlihat */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { padding: 24px var(--pad); }
+  .hero h1 { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
